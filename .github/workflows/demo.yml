@@ -9,7 +9,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Greetings
-        run: |
-          echo "Current working directory: $GITHUB_WORKSPACE"
-          echo "Hello World!"
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Create artifacts folder
+        run: mkdir -p artifacts
+
+      - name: Create sample file
+        run: echo "Hello artifacts!" > artifacts/hello.txt
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: my-artifact
+          path: artifacts
