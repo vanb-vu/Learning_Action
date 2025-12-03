@@ -3,7 +3,11 @@ name: Hello World
 on:
   push:
       branches: [ action_test ]
-      
+
+env:
+  TITLE: "GitHub.Action Test"
+  AUTHOR: "Binh"
+
 jobs:
   demo:
     runs-on: ubuntu-latest
@@ -18,10 +22,14 @@ jobs:
         run: mkdir -p artifacts
 
       - name: Create sample file
-        run: echo "Hello artifacts!" > artifacts/hello.txt
+        run: |
+          CURRENT_TIME=$(date +"%Y-%m-%d %H:%M:%S")
+          echo "Datetime: $CURRENT_TIME" > artifacts/datetime.txt
+          echo "Saved: $CURRENT_TIME"
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
           name: my-artifact
           path: artifacts
+          retention-days: 7
