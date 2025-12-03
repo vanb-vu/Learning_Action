@@ -46,9 +46,8 @@ jobs:
           
       - name: Read datetime from file
         run: |
+          ls $GITHUB_WORKSPACE
           ls $GITHUB_WORKSPACE/artifacts
           DATETIME=$(cat artifacts/datetime.txt)
           echo "The saved datetime is: $DATETIME"
-
-          # Nếu muốn xuất ra biến môi trường để dùng ở job sau:
           echo "DATETIME=$DATETIME" >> $GITHUB_ENV
