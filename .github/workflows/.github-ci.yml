@@ -1,7 +1,8 @@
 name: Python CI
 
 on:
-  workflow_dispatch:
+  push:
+    branches: [ develop_actions ]
 
 jobs:
   run-python:
