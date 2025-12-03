@@ -2,7 +2,7 @@ name: Hello World
 
 on:
   push:
-      branches: [ action_test ]
+      branches: [ develop_actions ]
 
 env:
   TITLE: "GitHub.Action Test"
