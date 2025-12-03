@@ -8,6 +8,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Print current directory
+        run: |
+          echo "Current working directory: $GITHUB_WORKSPACE"
+
       # 1. Checkout code
       - name: Checkout repository
         uses: actions/checkout@v4
