@@ -10,4 +10,6 @@ jobs:
 
     steps:
       - name: Greetings
-        run: echo "Hello World!"
+        run: |
+          echo "Current working directory: $GITHUB_WORKSPACE"
+          echo "Hello World!"
