@@ -1,4 +1,4 @@
-name: Hello World
+name: Develop Actions
 
 on:
   push:
