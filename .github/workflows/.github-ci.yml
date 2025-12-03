@@ -10,7 +10,9 @@ jobs:
     steps:
       - name: Print current directory
         run: |
+          echo "=================="
           echo "Current working directory: $GITHUB_WORKSPACE"
+          echo "=================="
 
       # 1. Checkout code
       - name: Checkout repository
