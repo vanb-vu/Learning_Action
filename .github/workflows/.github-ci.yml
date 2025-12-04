@@ -1,10 +1,10 @@
 name: Python CI
 
 on:
+  workflow_dispatch:
+  
   push:
     branches: [ develop_actions ]
-    
-  workflow_dispatch:
   
 jobs:
   run-python:
