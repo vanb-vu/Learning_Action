@@ -2,7 +2,13 @@ name: Python CI
 
 on:
   workflow_dispatch:
-  
+    inputs:
+      logLevel:
+        description: 'Log level'     
+        required: true
+        default: 'warning'
+      tags:
+        description: 'Test scenario tags'   
   push:
     branches: [ develop_actions ]
   
