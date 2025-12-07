@@ -71,7 +71,6 @@ cartopy
 networkx
 graphviz
 pydot
-python-graphviz
 pytorch-lightning
 transformers
 sentence-transformers
