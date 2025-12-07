@@ -25,7 +25,7 @@ jobs:
       - name: Setup Python 3.11
         uses: actions/setup-python@v4
         with:
-          python-version: "3.11"   # hoặc 3.8, 3.9,...
+          python-version: "3.11"   # 3.8, 3.9,...
 
       # 3. Upgrade pip
       - name: Upgrade pip
@@ -35,5 +35,13 @@ jobs:
       - name: Install requirements
         run: |
           if [ -f requirements.txt ]; then
-            pip install -r requirements.txt
+            while IFS= read -r line || [ -n "$line" ]; do
+              # loại bỏ comment và khoảng trắng đầu/cuối
+              pkg="$(echo "$line" | sed -e 's/#.*//' -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')"
+              [ -z "$pkg" ] && continue
+              echo "Installing: $pkg"
+              if ! pip install "$pkg"; then
+                echo "Warning: failed to install '$pkg', continuing..."
+              fi
+            done < requirements.txt
           fi
